@@ -12,7 +12,7 @@ def mask_account_card(str_in: str) -> str:
 #str0 = ''
 #str0 = 'Maestro 1596837868705199'
 #str0 = 'Счет 64686473678894779589'
-#str0 = 'MasterCard 7158300734726758'
+str0 = 'MasterCard 7158300734726758'
 #str0 = 'Счет 35383033474447895560'
 #str0 = 'Visa Classic 6831982476737658'
 #str0 = 'Visa Platinum 8990922113665229'
