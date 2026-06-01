@@ -1,4 +1,6 @@
 from masks import *
+from datetime import datetime
+
 
 def mask_account_card(str_in: str) -> str:
     """Функция для наложения маски на номер счета или карты"""
@@ -8,6 +10,8 @@ def mask_account_card(str_in: str) -> str:
         if str_in[0:4] == 'Счет': #СЧЁТ
             return 'Счет '+get_mask_account(str_in[5:])
 
-def get_date(dtin: str) -> str:
-    '''Конверт времени'''
-    return dtin[8:10]+'.'+dtin[5:7]+'.'+dtin[0:4]
+
+def get_date(date_string):
+    '''Дата'''
+    dt = datetime.fromisoformat(date_string)
+    return dt.strftime("%d.%m.%Y")
