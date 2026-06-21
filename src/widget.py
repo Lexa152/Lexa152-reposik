@@ -15,6 +15,9 @@ def mask_account_card(str_in: str) -> str:
 
 def get_date(date_string):
     '''Дата'''
-    dt = datetime.fromisoformat(date_string)
-    return dt.strftime("%d.%m.%Y")
+    if date_string != '':
+        dt = datetime.fromisoformat(date_string)
+        return dt.strftime("%d.%m.%Y")
+    else:
+        return 'нет данных'
 
