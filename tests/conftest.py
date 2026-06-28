@@ -61,6 +61,7 @@ def datetime_new(request):
          {'id': 123455004, 'state': 'CANCELED', 'date': '2026-05-03T18:35:29.512364'},
          {'id': 123455005, 'state': 'PENDING', 'date': '2026-05-03T18:35:29.512364'},
          {'id': 123455006, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
+         {'id': 123455006},
          {}
      ],
      [
@@ -94,57 +95,20 @@ def data_filter_pending(request):
 
 # test filter by state-3
 @pytest.fixture(params=[
-    ([], 'нет данных')
+    ([], []),                         # пустой список → пустой список
+    ([{"state": "EXECUTED"}], [{"state": "EXECUTED"}]),
+    ([{"state": "PENDING"}], []),     # не совпадает по state
+    ([{"state": "EXECUTED"}, {"state": "PENDING"}], [{"state": "EXECUTED"}]),
 ])
 def data_filter_null(request):
     return request.param
 
 
-# test sorted by data-1
-@pytest.fixture(params=[
-    ([
-         {'id': 123455001, 'state': 'EXECUTED', 'date': '2026-03-03T18:35:29.512364'},
-         {'id': 123455002, 'state': 'EXECUTED', 'date': '03-02-2026-03T18:35:29.512364'},
-         {'id': 123455003, 'state': 'CANCELED', 'date': '2026-01-03T18:35:29.512364'},
-         {'id': 123455004, 'state': 'CANCELED', 'date': '2026-04-03T18:35:29.512364'},
-         {'id': 123455005, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {'id': 123455006, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {}
-     ],
-     [
-         {'id': 123455005, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {'id': 123455006, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {'id': 123455004, 'state': 'CANCELED', 'date': '2026-04-03T18:35:29.512364'},
-         {'id': 123455001, 'state': 'EXECUTED', 'date': '2026-03-03T18:35:29.512364'},
-         {'id': 123455003, 'state': 'CANCELED', 'date': '2026-01-03T18:35:29.512364'},
-         {'id': 123455002, 'state': 'EXECUTED', 'date': '03-02-2026-03T18:35:29.512364'},
-         {}
-     ])
-])
-def data_sorted1(request):
-    return request.param
-
-
-# test sorted by data-2
-@pytest.fixture(params=[
-    ([
-         {'id': 123455001, 'state': 'EXECUTED', 'date': '2026-03-03T18:35:29.512364'},
-         {'id': 123455002, 'state': 'EXECUTED', 'date': '03-02-2026-03T18:35:29.512364'},
-         {'id': 123455003, 'state': 'CANCELED', 'date': '2026-01-03T18:35:29.512364'},
-         {'id': 123455004, 'state': 'CANCELED', 'date': '2026-04-03T18:35:29.512364'},
-         {'id': 123455005, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {'id': 123455006, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {}
-     ],
-     [
-         {'id': 123455003, 'state': 'CANCELED', 'date': '2026-01-03T18:35:29.512364'},
-         {'id': 123455001, 'state': 'EXECUTED', 'date': '2026-03-03T18:35:29.512364'},
-         {'id': 123455004, 'state': 'CANCELED', 'date': '2026-04-03T18:35:29.512364'},
-         {'id': 123455005, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {'id': 123455006, 'state': 'PENDING', 'date': '2026-06-03T18:35:29.512364'},
-         {'id': 123455002, 'state': 'EXECUTED', 'date': '03-02-2026-03T18:35:29.512364'},
-         {}
-     ])
-])
-def data_sorted2(request):
-    return request.param
+# test sorted by data
+@pytest.fixture
+def sample_data():
+    return [
+        {"id": 1, "date": "2019-07-03T18:35:29.512364"},
+        {"id": 2, "date": "2020-01-10T12:00:00"},
+        {"id": 3, "date": "2018-12-31T23:59:59"},
+    ]
