@@ -41,4 +41,3 @@ def sort_by_date(data, reverse=True):
     # Возвращаем отсортированные корректные элементы, затем некорректные
     return sorted_valid + invalid_items
 
-
