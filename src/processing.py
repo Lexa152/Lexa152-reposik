@@ -3,11 +3,17 @@ from datetime import datetime
 
 # фильтр по state:
 def filter_by_state(data_list, state='EXECUTED'):
-    """Фильтр списка словарей по state"""
-    if data_list != []:
-        return [item for item in data_list if (item.get('state') == state)]
-    else:
-        return 'нет данных'
+    """Фильтр списка словарей по state."""
+    if not isinstance(data_list, list):
+        raise TypeError("data_list должен быть списком")
+
+    result = []
+    for i, item in enumerate(data_list):
+        if not isinstance(item, dict):
+            raise TypeError(f"элемент по индексу {i} не является словарем")
+        if item.get('state') == state:
+            result.append(item)
+    return result
 
 
 # сортировка по датевремени:
