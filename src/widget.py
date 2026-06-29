@@ -1,5 +1,5 @@
-from masks import *
 from datetime import datetime
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(str_in: str) -> str:
@@ -15,5 +15,9 @@ def mask_account_card(str_in: str) -> str:
 
 def get_date(date_string):
     '''Дата'''
-    dt = datetime.fromisoformat(date_string)
-    return dt.strftime("%d.%m.%Y")
+    if date_string != '':
+        dt = datetime.fromisoformat(date_string)
+        return dt.strftime("%d.%m.%Y")
+    else:
+        return 'нет данных'
+
