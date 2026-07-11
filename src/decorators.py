@@ -3,15 +3,12 @@ import logging
 import sys
 from typing import Optional, Any, Callable
 
+
 def log(filename: Optional[str] = None) -> Callable:
     """
-    Декоратор для логирования начала и конца выполнения функции,
-    результатов или ошибок.
-
-    Args:
-        filename: имя файла для записи логов. Если None — логи в консоль (stdout).
+    Декоратор для логирования начала и конца выполнения функции, результатов или ошибок.
+    filename: имя файла для записи логов. Если None — логи в консоль (stdout).
     """
-
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(*args, **kwargs) -> Any:
@@ -60,5 +57,3 @@ def log(filename: Optional[str] = None) -> Callable:
         return wrapper
 
     return decorator
-
-

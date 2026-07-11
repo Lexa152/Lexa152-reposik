@@ -4,6 +4,7 @@ from src.decorators import log
 
 
 def test_log_success_to_console(capsys):
+    """ test_log_success_to_console """
     @log()
     def add(x, y):
         return x + y
@@ -18,6 +19,7 @@ def test_log_success_to_console(capsys):
 
 
 def test_log_error_to_console(capsys):
+    """ test_log_error_to_console """
     @log()
     def divide(x, y):
         return x / y
@@ -31,6 +33,7 @@ def test_log_error_to_console(capsys):
 
 
 def test_log_success_to_file(tmp_path):
+    """ test_log_success_to_file """
     log_file = tmp_path / "mylog.txt"
 
     @log(filename=str(log_file))
@@ -48,6 +51,7 @@ def test_log_success_to_file(tmp_path):
 
 
 def test_log_error_to_file(tmp_path):
+    """ test_log_error_to_file """
     log_file = tmp_path / "errorlog.txt"
 
     @log(filename=str(log_file))
@@ -68,6 +72,7 @@ def test_log_error_to_file(tmp_path):
 
 
 def test_log_with_kwargs(capsys):
+    """ test_log_with_kwargs """
     @log()
     def greet(name, greeting="Hello"):
         return f"{greeting}, {name}!"
@@ -81,6 +86,7 @@ def test_log_with_kwargs(capsys):
 
 
 def test_log_preserves_function_metadata():
+    """ test_log_preserves_function_metadata """
     @log()
     def sample(x):
         """Sample function docstring."""
@@ -88,5 +94,3 @@ def test_log_preserves_function_metadata():
 
     assert sample.__name__ == "sample"
     assert sample.__doc__ == "Sample function docstring."
-
-
