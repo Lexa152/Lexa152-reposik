@@ -72,3 +72,4 @@ def test_sort_iso_with_z_suffix():
     ]
     result = sort_by_date(data, reverse=True)
     assert [item["id"] for item in result] == [1, 2]
+
