@@ -6,11 +6,7 @@ CB_RATES_URL = "https://www.cbr-xml-daily.ru/daily_json.js"
 
 
 def _get_exchange_rates() -> Optional[Dict[str, Decimal]]:
-    """
-    Получает курсы валют от ЦБ РФ и возвращает словарь:
-    {'USD': Decimal('90.5'), 'EUR': Decimal('98.2'), ...}
-    Если запрос не удался — возвращает None.
-    """
+    """ Получает курсы валют и возвращает словарь """
     try:
         resp = requests.get(CB_RATES_URL, timeout=10)
         resp.raise_for_status()
@@ -35,6 +31,7 @@ def _get_exchange_rates() -> Optional[Dict[str, Decimal]]:
 
 
 def convert_transaction_to_rubles(transaction: Dict[str, Any]) -> float:
+    """ Конвертация валюты """
     op_amount = transaction.get("operationAmount")
     if not isinstance(op_amount, dict):
         raise ValueError("В транзакции отсутствует или неверно заполнено поле 'operationAmount'.")
