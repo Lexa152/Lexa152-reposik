@@ -182,4 +182,3 @@ class TestConvertTransactionToRubles:
 
         with pytest.raises(ValueError, match="Поле 'amount' не может быть преобразовано в число"):
             convert_transaction_to_rubles(transaction)
-
