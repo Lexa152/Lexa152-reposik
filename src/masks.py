@@ -2,8 +2,8 @@ import logging
 import os
 
 # файл-менеджмент
-current_dir = os.getcwd() # раб
-parent_dir = os.path.dirname(current_dir) # род
+current_dir = os.getcwd()  # раб
+parent_dir = os.path.dirname(current_dir)  # род
 
 # создание логгирования
 logger = logging.getLogger('masks')
@@ -17,7 +17,6 @@ logger.addHandler(file_handler)
 with open(parent_dir + "/logs/masks.log", 'w'):
     pass
 
-# целевые функции
 
 def get_mask_card_number(num_k: str) -> str:
     """Функция для наложения маски на номер банковой карты"""
@@ -38,4 +37,3 @@ def get_mask_account(num_s: str) -> str:
     else:
         logger.error('Упс! Неверно считан номер счёта (кол-во символов меньше 4)')
         return 'номер счёта с ошибкой'
-

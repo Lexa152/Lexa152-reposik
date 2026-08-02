@@ -3,11 +3,11 @@ import logging
 import os
 from typing import Any, Dict, List
 
-# файл-менеджмент
-current_dir = os.getcwd() # раб
-parent_dir = os.path.dirname(current_dir) # род
 
-# создание логгирования
+current_dir = os.getcwd()  # раб
+parent_dir = os.path.dirname(current_dir)  # род
+
+
 logger = logging.getLogger('utils')
 logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler(parent_dir + "/logs/utils.log", encoding='utf-8')
@@ -19,7 +19,7 @@ logger.addHandler(file_handler)
 with open(parent_dir + "/logs/utils.log", 'w'):
     pass
 
-# целевая функция
+
 def load_operations(file_path: str) -> List[Dict[str, Any]]:
     """  Загруж транзакции из файла """
     try:
@@ -38,4 +38,3 @@ def load_operations(file_path: str) -> List[Dict[str, Any]]:
         # загружанные — это не список
         logger.warning(f'Упс! Содержимое файла не является списком. Вывожу пустой список. Файл: {file_path}')
         return []
-

@@ -19,7 +19,6 @@ def _get_exchange_rates() -> Optional[Dict[str, Decimal]]:
     rates = {}
     valutes = data.get("Valute", {})
 
-
     for v in valutes.values():
         char_code = v.get("CharCode")
         if char_code in ("USD", "EUR"):
@@ -68,4 +67,3 @@ def convert_transaction_to_rubles(transaction: Dict[str, Any]) -> float:
     result_decimal = converted.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 
     return float(result_decimal)
-
