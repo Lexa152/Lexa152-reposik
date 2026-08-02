@@ -1,5 +1,6 @@
 import pytest
 
+
 # test_card_number
 @pytest.fixture(params=[
     ('7000792289606361', '7000 79** **** 6361'),

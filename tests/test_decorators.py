@@ -1,5 +1,7 @@
 import os
+
 import pytest
+
 from src.decorators import log
 
 

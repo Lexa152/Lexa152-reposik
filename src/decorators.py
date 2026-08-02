@@ -1,7 +1,7 @@
 import functools
 import logging
 import sys
-from typing import Optional, Any, Callable
+from typing import Any, Callable, Optional
 
 
 def log(filename: Optional[str] = None) -> Callable:

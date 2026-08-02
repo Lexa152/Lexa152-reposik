@@ -1,5 +1,5 @@
-from src.masks import get_mask_card_number
-from src.masks import get_mask_account
+from src.masks import get_mask_account, get_mask_card_number
+
 
 #test_get_mask_card_number on
 def test_get_mask_card_number(test_card_numbers):

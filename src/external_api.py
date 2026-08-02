@@ -1,6 +1,7 @@
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
+from typing import Any, Dict, Optional
+
 import requests
-from typing import Dict, Any, Optional
-from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
 
 CB_RATES_URL = "https://www.cbr-xml-daily.ru/daily_json.js"
 
