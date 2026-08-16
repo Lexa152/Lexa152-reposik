@@ -1,4 +1,6 @@
+import json
 from unittest.mock import mock_open, patch
+
 from src.utils import load_operations
 
 
@@ -28,3 +30,4 @@ class TestLoadOperationsMocked:
         result = load_operations("bad.json")
         assert isinstance(result, list)
         assert len(result) == 0
+

@@ -41,3 +41,4 @@ def card_number_generator(start: int, end: int) -> Iterable[str]:
         # Разбиваем на группы по 4 символа через пробел
         card_number = f"{number_str[0:4]} {number_str[4:8]} {number_str[8:12]} {number_str[12:16]}"
         yield card_number
+

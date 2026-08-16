@@ -44,6 +44,7 @@ def test_filter_by_currency_malformed_transaction():
     assert len(result) == 1
     assert result[0]["id"] == 3
 
+# генераторы
 
 def test_transaction_descriptions_yields_correct_values(transactions):
     descriptions = transaction_descriptions(transactions)
@@ -137,3 +138,5 @@ def test_card_number_generator_start_greater_than_end():
 def test_card_number_generator_exceeds_max_value():
     with pytest.raises(ValueError):
         list(card_number_generator(1, 10_000_0000_0000_0000))
+
+

@@ -1,5 +1,6 @@
 import csv
 from typing import Any, Dict, List
+
 from openpyxl import load_workbook
 
 
@@ -54,3 +55,4 @@ def import_data_xlsx(file_path: str, sheet_name: str | None = None) -> list[dict
         result.append(row_dict)
 
     return result
+
