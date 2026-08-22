@@ -5,7 +5,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(str_in: str) -> str:
     """Функция для наложения маски на номер счета или карты"""
-    if len(str_in) > 0:
+    if (str_in != None) and (len(str_in) > 0):
         if str_in[0:4] != 'Счет': #КАРТА
             return str_in[0:(len(str_in)-17)]+' '+get_mask_card_number(str_in[(len(str_in)-16):])
         if str_in[0:4] == 'Счет': #СЧЁТ
@@ -21,4 +21,3 @@ def get_date(date_string):
         return dt.strftime("%d.%m.%Y")
     else:
         return 'нет данных'
-
